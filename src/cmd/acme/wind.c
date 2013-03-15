@@ -14,6 +14,12 @@
 
 int	winid;
 
+#define ARRAY_LEN(a)	\
+	(sizeof(a) / sizeof(*a))
+
+#define RUNE_ARRAY_LEN(a)	\
+	(ARRAY_LEN(a) - 1)
+
 void
 wininit(Window *w, Window *clone, Rectangle r)
 {
@@ -534,8 +540,8 @@ winsettag1(Window *w)
 				i += 6;
 			}
 			else if (!w->filemenu){
-				runemove(new+i, Leditcomad, 8);
-				i += 8;
+				runemove(new+i, Leditcomad, RUNE_ARRAY_LEN(Leditcomad));
+				i += RUNE_ARRAY_LEN(Leditcomad);
 			}
 			else{
 				static Rune foo[] = { ' ', 0 };
